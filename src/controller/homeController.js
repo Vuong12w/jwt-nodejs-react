@@ -21,11 +21,9 @@ return res.redirect('/user')
 const getUpdateUser=async(req,res)=>{
   let id = req.params.id
   const user = await updateUser(id)
-  console.log(user)
-  if(user && user.length>0){
-    let listUser = user[0]
-    res.render('updateUser.ejs',{listUser})
-  }
+  let listUser={}
+  listUser=user
+   res.render('updateUser.ejs',{listUser})
 }
 const handleUpdateUser=async(req,res)=>{
   let email=req.body.email
