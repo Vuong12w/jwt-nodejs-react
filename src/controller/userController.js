@@ -80,4 +80,16 @@ const deleteFunction =async(req,res)=>{
   })
   }
 }
-export{readFunction,createFunction,updateFunction,deleteFunction}
+const getUserAccount=async(req,res)=>{
+  return res.status(200).json({
+    EM: 'ok',
+    EC: 0,
+    DT: {
+      ccess_token:req.token,
+            groupWithRoles:req.user.groupWithRoles,
+            email:req.user.email,
+            username:req.user.username
+    },
+  })
+}
+export{readFunction,createFunction,updateFunction,deleteFunction,getUserAccount}

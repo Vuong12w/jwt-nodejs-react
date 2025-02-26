@@ -3,6 +3,7 @@ const handleHelloWord =(req,res)=>{
   return res.render('home.ejs')
 }
 const handleUser =async(req,res)=>{
+
  let userList =await getListUser()
   return res.render('user.ejs',{userList})
 }
