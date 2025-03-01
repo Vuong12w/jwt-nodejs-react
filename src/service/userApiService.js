@@ -136,6 +136,11 @@ const createNewUser=async(data)=>{
   }
   }catch(e){
     console.log(e)
+    return {
+      EM: "Something wrong with services",
+      EC: 1,
+      DT: "group",
+    };
   }
 }
 const deleteUser=async(id)=>{

@@ -1,6 +1,6 @@
 import jwt, { decode } from "jsonwebtoken"
 require("dotenv").config()
-const nonSercurePaths =['/','/login','/register']
+const nonSercurePaths =['/','/login','/register','/logout']
   
 const createJWT=(payload)=>{
   let key=process.env.JWT_SECRET
@@ -53,6 +53,7 @@ const checkUserPermission =(req,res,next)=>{
     let email=req.user.email
     let roles = req.user.groupWithRoles.Roles
     let currentUrl = req.path
+    console.log(roles)
     if(!roles||roles.length===0){
       return res.status(403).json({
         EC:-1,
