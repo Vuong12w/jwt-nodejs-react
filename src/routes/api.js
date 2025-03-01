@@ -3,7 +3,7 @@ import { testApi,handleRegister,handleLogin } from "../controller/apiController"
 import { readFunction,createFunction,updateFunction,deleteFunction,getUserAccount } from "../controller/userController"
 import { readFunc } from "../controller/groupController"
 import {checkUserJWT,checkUserPermission} from '../middleware/JWTAction'
-import {readFunctionRole,createFunctionRole,updateFunctionRole,deleteFunctionRole} from '../controller/roleController'
+import {readFunctionRole,createFunctionRole,updateFunctionRole,deleteFunctionRole,getRoleByGroup} from '../controller/roleController'
 const router = express.Router()
 // const checkUserLogin=(req,res)=>{
 //   const nonSercurePaths =['/','/rigister','/login']
@@ -25,6 +25,7 @@ const initApiRoutes =(app)=>{
   router.post("/role/create",createFunctionRole)
   router.put("/role/update",updateFunctionRole)
   router.delete("/role/delete",deleteFunctionRole)
+  router.get("/role/by-group/:groupId",getRoleByGroup)
 
   //group route
   router.get("/group/read/",readFunc)

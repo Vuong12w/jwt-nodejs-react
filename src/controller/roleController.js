@@ -1,5 +1,5 @@
 import { updateUser,getAllUser,createNewUser,deleteUser,getUserWithPagination } from "../service/userApiService"
-import {creatNewRoles,deleteRole,getAllRoles} from '../service/RoleApiService'
+import {creatNewRoles,deleteRole,getAllRoles,getRoleByGroupAPI} from '../service/RoleApiService'
 const readFunctionRole =async(req,res)=>{
   try{
     
@@ -69,5 +69,22 @@ const deleteFunctionRole =async(req,res)=>{
   })
   }
 }
-
-export{readFunctionRole,createFunctionRole,updateFunctionRole,deleteFunctionRole}
+const getRoleByGroup=async(req,res)=>{
+  try{
+    let id = req.params.groupId
+    let data=await getRoleByGroupAPI(id)
+    return res.status(200).json({
+     EM: data.EM,
+     EC: data.EC,
+     DT: data.DT,
+   })
+ }catch(e){
+  console.log(e)
+  return res.status(500).json({
+   EM: 'error from server',
+   EC:'-1',
+   DT:'',
+ })
+ }
+}
+export{readFunctionRole,createFunctionRole,updateFunctionRole,deleteFunctionRole,getRoleByGroup}
